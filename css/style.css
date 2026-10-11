@@ -1,7 +1,35 @@
-/* ITCS333 A2 starter — implement the design spec from index.html here.
-   See README rubric for the graded checks. Do not use inline styles. */
-
-/* TODO: style #site-header (padding, border-bottom) */
-/* TODO: style .card (padding, border, gap) and .card-grid (display, gap, 3 columns) */
-/* TODO: style form inputs (padding) and a :focus state */
-/* TODO: add a @media (max-width: 700px) query collapsing .card-grid to one column */
+/* Box model: include padding and borders in element widths. */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; line-height: 1.6; color: #243247; background: #f3f6fb; }
+#site-header { padding: 24px; border-bottom: 4px solid #4c89c9; color: white; background: #173b65; }
+#site-header h1 { margin: 0 0 12px; font-size: 28px; }
+.main-nav { display: flex; flex-wrap: wrap; gap: 16px; }
+.main-nav a { color: white; text-decoration: none; padding: 4px 0; }
+.main-nav a:hover { text-decoration: underline; }
+main { max-width: 1000px; margin: 32px auto; padding: 0 20px; }
+.content-section { margin-bottom: 28px; padding: 24px; border: 1px solid #d5deeb; border-radius: 10px; background: white; }
+h2 { margin: 0 0 16px; color: #173b65; font-size: 22px; }
+.schedule-table { width: 100%; border-collapse: collapse; }
+.schedule-table th, .schedule-table td { padding: 12px; border: 1px solid #d5deeb; text-align: left; }
+.schedule-table th { color: white; background: #173b65; }
+.schedule-table tbody tr:nth-child(even) { background: #f3f6fb; }
+/* Three equal desktop columns, with space between cards. */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { padding: 20px; border: 1px solid #c7d7ea; border-radius: 8px; text-align: center; background: #f3f7fd; }
+.card h3 { margin: 0 0 8px; }
+.card .weight { margin: 0; color: #235e9d; font-size: 30px; font-weight: bold; }
+.register-form { display: flex; flex-direction: column; max-width: 480px; gap: 8px; }
+.register-form label { font-weight: bold; }
+.register-form input { width: 100%; padding: 10px; margin-bottom: 8px; border: 1px solid #9aaec7; border-radius: 5px; font: inherit; }
+.register-form input:focus { border-color: #235e9d; outline: 3px solid #b6d6fa; outline-offset: 2px; }
+.btn-primary { align-self: flex-start; padding: 10px 24px; border: 1px solid #173b65; border-radius: 5px; color: white; background: #235e9d; font: inherit; cursor: pointer; }
+.btn-primary:hover { background: #173b65; }
+.btn-primary:focus-visible, .main-nav a:focus-visible { outline: 3px solid #80b8f5; outline-offset: 3px; }
+.site-footer { padding: 16px; border-top: 1px solid #d5deeb; text-align: center; color: #52647b; }
+/* Stack cards on screens 700px wide or smaller. */
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  main { margin: 20px auto; padding: 0 12px; }
+  .content-section { padding: 16px; }
+  .schedule-table th, .schedule-table td { padding: 8px; }
+}
